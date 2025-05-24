@@ -1,0 +1,38 @@
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  
+  &.dark-theme {
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+  
+  &.light-theme {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.query-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}

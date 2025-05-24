@@ -1,0 +1,75 @@
+<div class="connection-panel">
+  <h3>Connections</h3>
+  <button mat-stroked-button color="primary" (click)="openNewConnection()">
+    <mat-icon>add</mat-icon> New Connection
+  </button>
+  <mat-nav-list>
+    <mat-list-item *ngFor="let conn of connections" [class.selected]="selectedConnection?.id === conn.id">
+      <span (click)="selectConnection(conn)">{{ conn.name }} ({{ conn.server }})</span>
+      <button mat-icon-button (click)="editConnection(conn)"><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button (click)="deleteConnection(conn)"><mat-icon>delete</mat-icon></button>
+    </mat-list-item>
+  </mat-nav-list>
+
+  <div *ngIf="showForm" class="connection-form-panel">
+    <h4>{{ isEdit ? 'Edit Connection' : 'New Connection' }}</h4>
+    <form [formGroup]="connectionForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Connection type</mat-label>
+        <mat-select formControlName="type">
+          <mat-option value="mssql">Microsoft SQL Server</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-radio-group formControlName="inputType">
+        <mat-radio-button value="parameters">Parameters</mat-radio-button>
+        <mat-radio-button value="connectionString">Connection String</mat-radio-button>
+      </mat-radio-group>
+      <mat-form-field appearance="fill">
+        <mat-label>Server</mat-label>
+        <input matInput formControlName="server" placeholder="e.g. servername,port">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Authentication type</mat-label>
+        <mat-select formControlName="authType">
+          <mat-option value="windows">Windows Authentication</mat-option>
+          <mat-option value="sql">SQL Login</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Database</mat-label>
+        <input matInput formControlName="database" placeholder="&lt;Default&gt;">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Encrypt</mat-label>
+        <mat-select formControlName="encrypt">
+          <mat-option value="mandatory">Mandatory</mat-option>
+          <mat-option value="optional">Optional</mat-option>
+          <mat-option value="disabled">Disabled</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Trust server certificate</mat-label>
+        <mat-select formControlName="trustServerCertificate">
+          <mat-option [value]="true">True</mat-option>
+          <mat-option [value]="false">False</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Server group</mat-label>
+        <input matInput formControlName="serverGroup" placeholder="&lt;Default&gt;">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Name (optional)</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field appearance="fill" *ngIf="connectionForm.value.inputType === 'connectionString'">
+        <mat-label>Connection String</mat-label>
+        <input matInput formControlName="connectionString">
+      </mat-form-field>
+      <div class="form-actions">
+        <button mat-button type="button" (click)="cancelForm()">Cancel</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!connectionForm.valid">{{ isEdit ? 'Save' : 'Connect' }}</button>
+      </div>
+    </form>
+  </div>
+</div> 

@@ -1,0 +1,27 @@
+<div class="welcome-container">
+  <div class="background-icon">
+    <mat-icon>storage</mat-icon>
+  </div>
+  
+  <div class="content">
+    <h1>Welcome to AI SQL Studio</h1>
+    
+    <div class="actions">
+      <button mat-raised-button color="primary">New Query</button>
+      <button mat-stroked-button>Open Connection</button>
+      <button mat-stroked-button>Recent Connections</button>
+    </div>
+    
+    <div class="tips-container">
+      <h2>Keyboard Shortcuts</h2>
+      <mat-list>
+        <mat-list-item *ngFor="let tip of shortcutTips">
+          <div class="tip-item">
+            <span class="description">{{ tip.description }}</span>
+            <span class="shortcut">{{ tip.shortcut }}</span>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</div>

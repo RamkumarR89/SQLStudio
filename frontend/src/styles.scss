@@ -1,0 +1,111 @@
+/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+// Include the common styles for Angular Material
+@include mat.core();
+
+// Global styles
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: #fafafa;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+// Layout styles
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.content-area {
+  flex: 1;
+  overflow: auto;
+}
+
+// Theme-specific styles
+.dark-theme {
+  background-color: #303030;
+  color: #ffffff;
+
+  .mat-mdc-card {
+    background-color: #424242;
+    color: #ffffff;
+  }
+
+  .mat-mdc-button {
+    color: #ffffff;
+  }
+
+  .mat-mdc-form-field {
+    color: #ffffff;
+  }
+
+  .mat-mdc-toolbar {
+    background-color: #424242;
+    color: #ffffff;
+  }
+}
+
+.light-theme {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.query-container {
+  padding: 16px;
+}
+
+// Material component overrides
+.mat-mdc-card {
+  margin: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.mat-mdc-button {
+  margin: 4px;
+}
+
+.mat-mdc-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+// Common utility classes
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.p-16 {
+  padding: 16px;
+}

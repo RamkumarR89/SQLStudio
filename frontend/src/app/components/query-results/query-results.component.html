@@ -1,0 +1,29 @@
+<div class="results-container" *ngIf="queryResult">
+  <div class="execution-info">
+    {{ executionInfo }}
+  </div>
+  
+  <div class="error-container" *ngIf="hasError">
+    <p class="error-message">{{ errorMessage }}</p>
+  </div>
+  
+  <div class="table-container" *ngIf="!hasError && dataSource.length > 0">
+    <table mat-table [dataSource]="dataSource" class="results-table">
+      <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+        <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+        <td mat-cell *matCellDef="let element">{{ element[column] }}</td>
+      </ng-container>
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  
+  <div class="empty-results" *ngIf="!hasError && dataSource.length === 0">
+    <p>Query executed successfully, but no rows were returned.</p>
+  </div>
+</div>
+
+<div class="no-results" *ngIf="!queryResult">
+  <p>Execute a query to see results here.</p>
+</div>

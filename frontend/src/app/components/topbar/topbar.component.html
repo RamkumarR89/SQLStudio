@@ -1,0 +1,11 @@
+<mat-toolbar color="primary" class="topbar">
+  <div class="menu-container">
+    <button mat-button *ngFor="let item of menuItems">
+      {{ item }}
+    </button>
+  </div>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="toggleTheme()">
+    <mat-icon>{{ (themeService.isDarkTheme$ | async) ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+</mat-toolbar>

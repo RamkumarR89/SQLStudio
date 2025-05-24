@@ -1,0 +1,22 @@
+<div class="status-bar">
+  <div class="left-items">
+    <span class="status-item">
+      <mat-icon class="status-icon">power_off</mat-icon>
+      {{ connectionStatus }}
+    </span>
+    <span class="status-item" *ngIf="serverInfo">
+      <mat-icon class="status-icon">dns</mat-icon>
+      {{ serverInfo }}
+    </span>
+  </div>
+  
+  <div class="right-items">
+    <span class="status-item">
+      <mat-icon class="status-icon">notifications</mat-icon>
+    </span>
+    <span class="status-item">
+      <mat-icon class="status-icon">language</mat-icon>
+      UTF-8
+    </span>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="app-container" [ngClass]="{'dark-theme': (isDarkTheme$ | async), 'light-theme': !(isDarkTheme$ | async)}">
+  <app-topbar></app-topbar>
+  <div class="main-content">
+    <app-sidebar></app-sidebar>
+    <div class="content-area">
+      <app-welcome-panel></app-welcome-panel>
+      <div class="query-container">
+        <app-query-editor (queryExecuted)="handleQueryExecuted($event)"></app-query-editor>
+        <app-query-results [queryResult]="currentQueryResult"></app-query-results>
+      </div>
+    </div>
+  </div>
+  <app-status-bar></app-status-bar>
+</div>
+
+<router-outlet></router-outlet>
+
+<mat-sidenav-container style="height: 100vh;">
+  <mat-sidenav #rightPanel mode="side" position="end" [(opened)]="isConnectionPanelOpen" [fixedInViewport]="true" fixedTopGap="56">
+    <app-connection-panel (connectionSelected)="onConnectionSelected($event)" (closePanel)="isConnectionPanelOpen = false"></app-connection-panel>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-sidebar (openConnections)="isConnectionPanelOpen = true"></app-sidebar>
+    <div class="main-content">
+      <app-query-editor [activeConnection]="activeConnection"></app-query-editor>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

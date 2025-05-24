@@ -1,0 +1,30 @@
+@use '../../../styles/variables' as vars;
+
+.status-bar {
+  height: 22px;
+  background-color: vars.$ads-dark-gray;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8px;
+  border-top: 1px solid vars.$ads-border;
+}
+
+.left-items, .right-items {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-icon {
+  font-size: 14px;
+  height: 14px;
+  width: 14px;
+}
