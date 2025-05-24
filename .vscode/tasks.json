@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Start AI SQL Studio",
+			"type": "shell",
+			"command": "cd \"${workspaceFolder}/backend\" && start uvicorn app.main:app --reload && cd \"${workspaceFolder}/frontend\" && npm start",
+			"group": "build",
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}
