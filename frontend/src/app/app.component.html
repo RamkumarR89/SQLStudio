@@ -2,8 +2,7 @@
   <app-topbar></app-topbar>
   <div class="main-content" style="display: flex; height: 100vh;">
     <app-sidebar [activeTab]="activeTab" (tabChanged)="onSidebarTabChanged($event)"></app-sidebar>
-    <ng-container [ngSwitch]="activeTab">
-      <app-connections-panel *ngSwitchCase="'connect'"></app-connections-panel>
+    <ng-container *ngIf="activeTab" [ngSwitch]="activeTab">
       <app-connections-panel *ngSwitchCase="'explorer'"></app-connections-panel>
       <div *ngSwitchCase="'search'" class="panel-placeholder">🔍 Search coming soon!</div>
       <div *ngSwitchCase="'notebook'" class="panel-placeholder">📒 Notebooks coming soon!</div>

@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
   showConnectionsPanel = true;
   currentQueryResult?: QueryResult;
   isDarkTheme$: Observable<boolean>;
-  activeTab: SidebarTab = 'connect';
+  activeTab: SidebarTab | null = 'explorer';
   
   constructor(private themeService: ThemeService) {
     this.isDarkTheme$ = this.themeService.isDarkTheme$;
@@ -55,6 +55,6 @@ export class AppComponent implements OnInit {
   }
 
   onSidebarTabChanged(tab: SidebarTab) {
-    this.activeTab = tab;
+    this.activeTab = (this.activeTab === tab) ? null : tab;
   }
 }

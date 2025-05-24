@@ -10,7 +10,7 @@ import { ConnectionDialogComponent } from '../connection-dialog/connection-dialo
 import { ConnectionService, ConnectionInfo, ConnectionRequest } from '../../services/connection.service';
 import { MatListModule } from '@angular/material/list';
 
-export type SidebarTab = 'connect' | 'explorer' | 'search' | 'notebook' | 'sourceControl' | 'extensions' | 'account' | 'settings';
+export type SidebarTab = 'explorer' | 'search' | 'notebook' | 'sourceControl' | 'extensions' | 'account' | 'settings' | 'connect';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,12 +19,11 @@ export type SidebarTab = 'connect' | 'explorer' | 'search' | 'notebook' | 'sourc
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent implements OnInit {
-  @Input() activeTab: SidebarTab = 'connect';
+  @Input() activeTab: SidebarTab | null = 'explorer';
   @Output() tabChanged = new EventEmitter<SidebarTab>();
   @Output() connectionsClicked = new EventEmitter<void>();
   activeTab$: Observable<SidebarTab>;
   tabs = [
-    { id: 'connect' as SidebarTab, icon: 'link', tooltip: 'Connect' },
     { id: 'explorer' as SidebarTab, icon: 'storage', tooltip: 'Explorer' },
     { id: 'search' as SidebarTab, icon: 'search', tooltip: 'Search' },
     { id: 'notebook' as SidebarTab, icon: 'book', tooltip: 'Notebook' },
