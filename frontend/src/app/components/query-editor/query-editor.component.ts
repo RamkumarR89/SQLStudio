@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ConnectionService, ConnectionInfo } from '../../services/connection.service';
 import { QueryService, QueryRequest } from '../../services/query.service';
@@ -31,7 +31,6 @@ import { ConnectionDialogComponent } from '../connection-dialog/connection-dialo
 })
 export class QueryEditorComponent implements OnInit {
   @Output() queryExecuted = new EventEmitter<any>();
-  @Input() activeConnection: ConnectionInfo | null = null;
   
   queryForm: FormGroup;
   connections: ConnectionInfo[] = [];

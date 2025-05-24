@@ -5,8 +5,8 @@
         mat-icon-button
         [matTooltip]="tab.tooltip"
         matTooltipPosition="right"
-        [class.active]="(activeTab$ | async) === tab.id"
-        (click)="tab.id === 'explorer' ? openConnectionsPanel() : setActiveTab(tab.id)">
+        [class.active]="activeTab === tab.id"
+        (click)="onTabClick(tab.id)">
         <mat-icon>{{ tab.icon }}</mat-icon>
       </button>
     </ng-container>

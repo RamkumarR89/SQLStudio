@@ -1,0 +1,109 @@
+.connections-panel-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #f5f5f5;
+  min-width: 340px;
+  max-width: 400px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px 8px 16px;
+  background: #fafafa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.panel-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #444;
+  letter-spacing: 1px;
+}
+
+.panel-actions button {
+  margin-left: 4px;
+}
+
+.section-header {
+  font-size: 12px;
+  font-weight: bold;
+  color: #888;
+  padding: 12px 16px 4px 16px;
+  letter-spacing: 1px;
+}
+
+.servers-list {
+  flex: 1;
+  overflow-y: auto;
+  background: #fff;
+}
+
+mat-list-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 12px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.chevron {
+  font-size: 18px;
+  color: #aaa;
+}
+
+.server-icon {
+  font-size: 20px;
+  color: #2196f3;
+}
+
+.conn-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  color: #333;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+.status-dot.disconnected {
+  background: #e53935;
+}
+.status-dot.connected {
+  background: #43a047;
+}
+
+.azure-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  color: #1976d2;
+  border-top: 1px solid #e0e0e0;
+  background: #f3f8fd;
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.new-connection-form-placeholder {
+  margin: 16px;
+  margin-top: 0;
+}
+
+mat-card {
+  padding: 16px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+} 

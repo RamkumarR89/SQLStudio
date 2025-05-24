@@ -1,0 +1,35 @@
+<div class="connections-panel-container">
+  <div class="panel-header">
+    <span class="panel-title">CONNECTIONS</span>
+    <span class="panel-actions">
+      <button mat-icon-button matTooltip="New Connection" (click)="toggleNewConnectionForm()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Save"><mat-icon>save</mat-icon></button>
+      <button mat-icon-button matTooltip="Refresh"><mat-icon>refresh</mat-icon></button>
+      <button mat-icon-button matTooltip="Manage"><mat-icon>more_vert</mat-icon></button>
+    </span>
+  </div>
+  <div class="section-header">SERVERS</div>
+  <mat-nav-list class="servers-list">
+    <mat-list-item *ngFor="let conn of connections">
+      <mat-icon class="chevron">chevron_right</mat-icon>
+      <mat-icon class="server-icon">storage</mat-icon>
+      <span class="conn-name" [matTooltip]="conn.name">{{ conn.name }}</span>
+      <span class="status-dot" [ngClass]="conn.status"></span>
+      <button mat-icon-button matTooltip="Connect"><mat-icon>power_settings_new</mat-icon></button>
+      <button mat-icon-button matTooltip="Edit"><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button matTooltip="Delete"><mat-icon>delete</mat-icon></button>
+    </mat-list-item>
+  </mat-nav-list>
+  <div *ngIf="showNewConnectionForm" class="new-connection-form-placeholder">
+    <mat-card>
+      <mat-card-title>Connection Details Form Here</mat-card-title>
+      <!-- Replace this with your actual connection form -->
+    </mat-card>
+  </div>
+  <div class="section-header azure-section">
+    <mat-icon>cloud</mat-icon>
+    AZURE
+  </div>
+</div> 

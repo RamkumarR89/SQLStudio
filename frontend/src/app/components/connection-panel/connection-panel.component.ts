@@ -1,32 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ConnectionService, ConnectionInfo, ConnectionRequest } from '../../services/connection.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatRadioModule } from '@angular/material/radio';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatNavList, MatListItem } from '@angular/material/list';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-connection-panel',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatButtonModule,
-    MatIconModule,
-    MatListModule,
-    ReactiveFormsModule,
-    FormsModule
-  ],
   templateUrl: './connection-panel.component.html',
   styleUrls: ['./connection-panel.component.scss']
 })

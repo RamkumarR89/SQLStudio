@@ -1,32 +1,32 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { ConnectionRequest } from '../../services/connection.service';
+import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule } from '@angular/material/dialog';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-connection-dialog',
+  templateUrl: './connection-dialog.component.html',
+  styleUrls: ['./connection-dialog.component.scss'],
   standalone: true,
   imports: [
+    CommonModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatOptionModule,
     MatRadioModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
     ReactiveFormsModule,
-    FormsModule
-  ],
-  templateUrl: './connection-dialog.component.html',
-  styleUrls: ['./connection-dialog.component.scss']
+    FormsModule,
+    MatButtonModule,
+    MatDialogModule
+  ]
 })
 export class ConnectionDialogComponent {
   connectionForm: FormGroup;

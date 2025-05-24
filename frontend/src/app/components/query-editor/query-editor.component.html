@@ -1,47 +1,45 @@
 <div class="query-editor-container">
-  <form [formGroup]="queryForm" (ngSubmit)="executeQuery()">
-    <div class="connection-selector">
-      <button mat-stroked-button color="primary" (click)="openNewConnectionDialog()" style="margin-bottom: 12px;">
-        <mat-icon>add</mat-icon> New Connection
-      </button>
-      <mat-form-field appearance="fill">
-        <mat-label>Connection</mat-label>
-        <mat-select formControlName="connectionId">
-          <mat-option *ngFor="let conn of connections" [value]="conn.id">
-            {{ conn.name }} ({{ conn.database }})
-          </mat-option>
-        </mat-select>
+  <ng-container *ngIf="queryForm.value.connectionId; else noConnection">
+    <form [formGroup]="queryForm" (ngSubmit)="executeQuery()">
+      <div class="connection-selector">
+        <button mat-stroked-button color="primary" (click)="openNewConnectionDialog()" style="margin-bottom: 12px;">
+          <mat-icon>add</mat-icon> New Connection
+        </button>
+        <mat-form-field appearance="fill">
+          <mat-label>Connection</mat-label>
+          <mat-select formControlName="connectionId">
+            <mat-option *ngFor="let conn of connections" [value]="conn.id">
+              {{ conn.name }} ({{ conn.database }})
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">
+          <mat-icon>play_arrow</mat-icon>
+          Execute
+        </button>
+        
+        <mat-spinner *ngIf="isLoading" diameter="24" class="spinner"></mat-spinner>
+      </div>
+      <mat-form-field appearance="fill" class="sql-editor">
+        <mat-label>SQL Query</mat-label>
+        <textarea 
+          matInput 
+          formControlName="sql" 
+          rows="10"
+          placeholder="Enter your SQL query here..."
+        ></textarea>
+        <mat-hint>Try these sample queries: 
+          <a href="javascript:void(0)" (click)="setQuery('SELECT * FROM employees ORDER BY salary DESC')">Highest Salaries</a> | 
+          <a href="javascript:void(0)" (click)="setQuery('SELECT department, AVG(salary) as avg_salary FROM employees GROUP BY department ORDER BY avg_salary DESC')">Average Salary by Department</a> | 
+          <a href="javascript:void(0)" (click)="setQuery('SELECT * FROM employees WHERE department = \'Engineering\'')">Engineering Department</a>
+        </mat-hint>
       </mat-form-field>
-      
-      <button mat-raised-button color="primary" type="submit" [disabled]="isLoading">
-        <mat-icon>play_arrow</mat-icon>
-        Execute
-      </button>
-      
-      <mat-spinner *ngIf="isLoading" diameter="24" class="spinner"></mat-spinner>
+    </form>
+  </ng-container>
+  <ng-template #noConnection>
+    <div class="no-connection-message">
+      <p>Please connect to a database to start writing SQL queries.</p>
     </div>
-    <div *ngIf="activeConnection" class="active-connection-bar">
-      <mat-form-field appearance="fill">
-        <mat-label>Active Connection</mat-label>
-        <input matInput [value]="activeConnection.name + ' (' + activeConnection.server + ')'" disabled>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Database</mat-label>
-        <input matInput [value]="activeConnection.database" disabled>
-      </mat-form-field>
-    </div>
-    <mat-form-field appearance="fill" class="sql-editor">
-      <mat-label>SQL Query</mat-label>
-      <textarea 
-        matInput 
-        formControlName="sql" 
-        rows="10"
-        placeholder="Enter your SQL query here..."
-      ></textarea>      <mat-hint>Try these sample queries: 
-        <a href="javascript:void(0)" (click)="setQuery('SELECT * FROM employees ORDER BY salary DESC')">Highest Salaries</a> | 
-        <a href="javascript:void(0)" (click)="setQuery('SELECT department, AVG(salary) as avg_salary FROM employees GROUP BY department ORDER BY avg_salary DESC')">Average Salary by Department</a> | 
-        <a href="javascript:void(0)" (click)="setQuery('SELECT * FROM employees WHERE department = \'Engineering\'')">Engineering Department</a>
-      </mat-hint>
-    </mat-form-field>
-  </form>
+  </ng-template>
 </div>
