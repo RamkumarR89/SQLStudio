@@ -12,6 +12,7 @@ import { QueryEditorComponent } from './components/query-editor/query-editor.com
 import { QueryResultsComponent } from './components/query-results/query-results.component';
 import { ConnectionInfo } from './services/connection.service';
 import { ConnectionsPanelComponent } from './components/connections-panel/connections-panel.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,8 @@ import { ConnectionsPanelComponent } from './components/connections-panel/connec
     StatusBarComponent,
     QueryEditorComponent,
     QueryResultsComponent,
-    ConnectionsPanelComponent
+    ConnectionsPanelComponent,
+    MatSidenavModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

@@ -25,6 +25,7 @@ export interface ConnectionInfo {
   username: string;
   connected: boolean;
   created_at: Date;
+  status?: string; // Added status property
 }
 
 @Injectable({

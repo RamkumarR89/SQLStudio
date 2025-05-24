@@ -1,35 +1,61 @@
-<div class="connections-panel-container">
-  <div class="panel-header">
-    <span class="panel-title">CONNECTIONS</span>
-    <span class="panel-actions">
-      <button mat-icon-button matTooltip="New Connection" (click)="toggleNewConnectionForm()">
-        <mat-icon>add</mat-icon>
-      </button>
-      <button mat-icon-button matTooltip="Save"><mat-icon>save</mat-icon></button>
-      <button mat-icon-button matTooltip="Refresh"><mat-icon>refresh</mat-icon></button>
-      <button mat-icon-button matTooltip="Manage"><mat-icon>more_vert</mat-icon></button>
-    </span>
+<mat-drawer-container class="drawer-container" autosize>
+  <div class="connections-panel-container">
+    <div class="panel-header">
+      <span class="panel-title">CONNECTIONS</span>
+      <span class="panel-actions">
+        <button mat-icon-button matTooltip="New Connection" (click)="openNewConnection()">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Save"><mat-icon>save</mat-icon></button>
+        <button mat-icon-button matTooltip="Refresh"><mat-icon>refresh</mat-icon></button>
+        <button mat-icon-button matTooltip="Manage"><mat-icon>more_vert</mat-icon></button>
+      </span>
+    </div>
+    <div class="section-header">SERVERS</div>
+    <mat-nav-list class="servers-list">
+      <ng-container *ngIf="connections.length > 0; else noConnections">
+        <mat-list-item *ngFor="let conn of connections">
+          <mat-icon class="chevron">chevron_right</mat-icon>
+          <mat-icon class="server-icon">storage</mat-icon>
+          <span class="conn-name" [matTooltip]="conn.name">{{ conn.name }}</span>
+          <span class="status-dot" [ngClass]="conn.status"></span>
+          <button mat-icon-button matTooltip="Connect"><mat-icon>power_settings_new</mat-icon></button>
+          <button mat-icon-button matTooltip="Edit" (click)="editConnection(conn)"><mat-icon>edit</mat-icon></button>
+          <button mat-icon-button matTooltip="Delete" (click)="deleteConnection(conn)"><mat-icon>delete</mat-icon></button>
+        </mat-list-item>
+      </ng-container>
+    </mat-nav-list>
+    <ng-template #noConnections>
+      <div class="no-connections-placeholder">
+        No servers found. Click <mat-icon inline>add</mat-icon> to add a new server.
+      </div>
+    </ng-template>
+    <div class="section-header azure-section">
+      <mat-icon>cloud</mat-icon>
+      AZURE
+    </div>
   </div>
-  <div class="section-header">SERVERS</div>
-  <mat-nav-list class="servers-list">
-    <mat-list-item *ngFor="let conn of connections">
-      <mat-icon class="chevron">chevron_right</mat-icon>
-      <mat-icon class="server-icon">storage</mat-icon>
-      <span class="conn-name" [matTooltip]="conn.name">{{ conn.name }}</span>
-      <span class="status-dot" [ngClass]="conn.status"></span>
-      <button mat-icon-button matTooltip="Connect"><mat-icon>power_settings_new</mat-icon></button>
-      <button mat-icon-button matTooltip="Edit"><mat-icon>edit</mat-icon></button>
-      <button mat-icon-button matTooltip="Delete"><mat-icon>delete</mat-icon></button>
-    </mat-list-item>
-  </mat-nav-list>
-  <div *ngIf="showNewConnectionForm" class="new-connection-form-placeholder">
-    <mat-card>
-      <mat-card-title>Connection Details Form Here</mat-card-title>
-      <!-- Replace this with your actual connection form -->
-    </mat-card>
-  </div>
-  <div class="section-header azure-section">
-    <mat-icon>cloud</mat-icon>
-    AZURE
-  </div>
-</div> 
+  <mat-drawer #drawer position="end" mode="over" [opened]="drawerOpened" class="connection-drawer" (closedStart)="closeDrawer()">
+    <div class="drawer-header">
+      <span class="drawer-title">Connection</span>
+      <button mat-icon-button (click)="closeDrawer()"><mat-icon>close</mat-icon></button>
+    </div>
+    <mat-tab-group>
+      <mat-tab label="Recent">
+        <div class="recent-list-placeholder">Recent connections go here</div>
+      </mat-tab>
+      <mat-tab label="Browse">
+        <div class="browse-placeholder">Browse content goes here</div>
+      </mat-tab>
+    </mat-tab-group>
+    <div class="drawer-content">
+      <app-connection-details-panel
+        [connection]="selectedConnection"
+        [isEdit]="!!selectedConnection"
+        (save)="onSaveConnection($event)"
+        (delete)="onDeleteConnection()"
+        (cancel)="closeDrawer()">
+      </app-connection-details-panel>
+    </div>
+  </mat-drawer>
+</mat-drawer-container> 

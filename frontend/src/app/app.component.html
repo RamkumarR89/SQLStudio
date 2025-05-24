@@ -1,20 +1,22 @@
 <div class="app-container" [ngClass]="{'dark-theme': (isDarkTheme$ | async), 'light-theme': !(isDarkTheme$ | async)}">
   <app-topbar></app-topbar>
-  <div class="main-content" style="display: flex; height: 100vh;">
+  <div class="main-content">
     <app-sidebar [activeTab]="activeTab" (tabChanged)="onSidebarTabChanged($event)"></app-sidebar>
-    <ng-container *ngIf="activeTab" [ngSwitch]="activeTab">
-      <app-connections-panel *ngSwitchCase="'explorer'"></app-connections-panel>
-      <div *ngSwitchCase="'search'" class="panel-placeholder">🔍 Search coming soon!</div>
-      <div *ngSwitchCase="'notebook'" class="panel-placeholder">📒 Notebooks coming soon!</div>
-      <div *ngSwitchCase="'sourceControl'" class="panel-placeholder">🔗 Source Control coming soon!</div>
-      <div *ngSwitchCase="'extensions'" class="panel-placeholder">🧩 Extensions coming soon!</div>
-      <div *ngSwitchCase="'account'" class="panel-placeholder">👤 Account coming soon!</div>
-      <div *ngSwitchCase="'settings'" class="panel-placeholder">⚙️ Settings coming soon!</div>
-    </ng-container>
-    <div class="content-area" style="flex: 1;">
-      <div class="query-container">
-        <app-query-editor (queryExecuted)="handleQueryExecuted($event)"></app-query-editor>
-        <app-query-results [queryResult]="currentQueryResult"></app-query-results>
+    <div class="main-area">
+      <ng-container *ngIf="activeTab" [ngSwitch]="activeTab">
+        <app-connections-panel *ngSwitchCase="'explorer'"></app-connections-panel>
+        <div *ngSwitchCase="'search'" class="panel-placeholder">🔍 Search coming soon!</div>
+        <div *ngSwitchCase="'notebook'" class="panel-placeholder">📒 Notebooks coming soon!</div>
+        <div *ngSwitchCase="'sourceControl'" class="panel-placeholder">🔗 Source Control coming soon!</div>
+        <div *ngSwitchCase="'extensions'" class="panel-placeholder">🧩 Extensions coming soon!</div>
+        <div *ngSwitchCase="'account'" class="panel-placeholder">👤 Account coming soon!</div>
+        <div *ngSwitchCase="'settings'" class="panel-placeholder">⚙️ Settings coming soon!</div>
+      </ng-container>
+      <div class="content-area">
+        <div class="query-container">
+          <app-query-editor (queryExecuted)="handleQueryExecuted($event)"></app-query-editor>
+          <app-query-results [queryResult]="currentQueryResult"></app-query-results>
+        </div>
       </div>
     </div>
   </div>

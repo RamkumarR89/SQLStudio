@@ -1,0 +1,16 @@
+.connection-details-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.full-width {
+  width: 100%;
+}
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+.mb-16 {
+  margin-bottom: 16px;
+} 
