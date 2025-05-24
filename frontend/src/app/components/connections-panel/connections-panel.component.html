@@ -3,8 +3,9 @@
     <div class="panel-header">
       <span class="panel-title">CONNECTIONS</span>
       <span class="panel-actions">
-        <button mat-icon-button matTooltip="New Connection" (click)="openNewConnection()">
+        <button mat-raised-button color="primary" (click)="openNewConnection()" class="add-server-btn">
           <mat-icon>add</mat-icon>
+          Add Server
         </button>
         <button mat-icon-button matTooltip="Save"><mat-icon>save</mat-icon></button>
         <button mat-icon-button matTooltip="Refresh"><mat-icon>refresh</mat-icon></button>
@@ -27,7 +28,8 @@
     </mat-nav-list>
     <ng-template #noConnections>
       <div class="no-connections-placeholder">
-        No servers found. Click <mat-icon inline>add</mat-icon> to add a new server.
+        <mat-icon>info</mat-icon>
+        <span>No servers found. Click <b>Add Server</b> to create a new connection.</span>
       </div>
     </ng-template>
     <div class="section-header azure-section">

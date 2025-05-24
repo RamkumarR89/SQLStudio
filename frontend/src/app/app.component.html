@@ -13,6 +13,10 @@
         <div *ngSwitchCase="'settings'" class="panel-placeholder">⚙️ Settings coming soon!</div>
       </ng-container>
       <div class="content-area">
+        <div class="empty-state-banner">
+          <mat-icon>info</mat-icon>
+          <span>Please connect to a database to start writing SQL queries.</span>
+        </div>
         <div class="query-container">
           <app-query-editor (queryExecuted)="handleQueryExecuted($event)"></app-query-editor>
           <app-query-results [queryResult]="currentQueryResult"></app-query-results>

@@ -82,3 +82,20 @@ app-sidebar {
   height: 100%;
   position: relative;
 }
+
+.empty-state-banner {
+  display: flex;
+  align-items: center;
+  background: #f3f8fd;
+  color: #1976d2;
+  padding: 16px 24px;
+  border-radius: 4px;
+  margin: 24px 0 0 24px;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.empty-state-banner mat-icon {
+  margin-right: 12px;
+  color: #1976d2;
+}

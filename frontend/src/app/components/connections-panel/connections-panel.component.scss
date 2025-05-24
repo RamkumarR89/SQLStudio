@@ -24,8 +24,16 @@
   letter-spacing: 1px;
 }
 
-.panel-actions button {
-  margin-left: 4px;
+.panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-server-btn {
+  margin-right: 8px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 .section-header {
@@ -160,4 +168,23 @@ mat-card {
 
 .mat-card {
   margin-top: 16px;
+}
+
+.no-connections-placeholder {
+  display: flex;
+  align-items: center;
+  background: #f3f8fd;
+  color: #1976d2;
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin: 12px 0 0 0;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  gap: 12px;
+}
+
+.no-connections-placeholder mat-icon {
+  color: #1976d2;
+  margin-right: 8px;
 } 
